@@ -22,7 +22,8 @@
         <activity android:name=".LoginApp" />
         <activity android:name=".LoginGoogle" />
         <activity android:name=".LoginFacebook" />
-        <activity android:name=".LoginTwitter"></activity>
+        <activity android:name=".LoginTwitter" />
+        <activity android:name=".SignUp"></activity>
     </application>
 
     <meta-data
