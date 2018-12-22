@@ -19,6 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginApp" />
+        <activity android:name=".LoginGoogle" />
+        <activity android:name=".LoginFacebook" />
+        <activity android:name=".LoginTwitter"></activity>
     </application>
 
 </manifest>
