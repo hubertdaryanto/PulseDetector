@@ -10,10 +10,13 @@ import android.widget.Toast;
 import com.facebook.FacebookSdk;
 import com.mukeshsolanki.sociallogin.facebook.FacebookHelper;
 import com.mukeshsolanki.sociallogin.facebook.FacebookListener;
+import com.mukeshsolanki.sociallogin.google.GoogleHelper;
+import com.mukeshsolanki.sociallogin.google.GoogleListener;
 
-public class LoginApp extends AppCompatActivity implements FacebookListener {
+public class LoginApp extends AppCompatActivity implements FacebookListener, GoogleListener {
 
     FacebookHelper mFaceBook;
+    GoogleHelper mGoogle;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -21,11 +24,15 @@ public class LoginApp extends AppCompatActivity implements FacebookListener {
         super.onActivityResult(requestCode, resultCode,data);
 
         mFaceBook.onActivityResult(requestCode,resultCode,data);
+        mGoogle.onActivityResult(requestCode,resultCode,data);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_app);
+
+        //init google
+        mGoogle = new GoogleHelper(this,this,null);
 
         //Init Facebook
 
@@ -42,6 +49,16 @@ public class LoginApp extends AppCompatActivity implements FacebookListener {
                 mFaceBook.performSignIn(LoginApp.this);
             }
         });
+
+        Button btnGoogle = (Button)findViewById(R.id.btnGoogle);
+        btnFacebook.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick (View v)
+            {
+                mGoogle.performSignIn(LoginApp.this);
+            }
+        });
     }
 
     @Override
@@ -56,6 +73,21 @@ public class LoginApp extends AppCompatActivity implements FacebookListener {
 
     @Override
     public void onFBSignOut() {
+        Toast.makeText(this, "Signout !!!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onGoogleAuthSignIn(String authToken, String userId) {
+        Toast.makeText(this, ""+userId, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onGoogleAuthSignInFailed(String errorMessage) {
+        Toast.makeText(this, ""+errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onGoogleAuthSignOut() {
         Toast.makeText(this, "Signout !!!", Toast.LENGTH_SHORT).show();
     }
 }
