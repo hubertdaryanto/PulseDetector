@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "81174131482",
+    "firebase_url": "https://cumlaude-e6ae0.firebaseio.com",
+    "project_id": "cumlaude-e6ae0",
+    "storage_bucket": "cumlaude-e6ae0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81174131482:android:3779c889c41193d0",
+        "android_client_info": {
+          "package_name": "com.yangpentingyakin.pulsedetecctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81174131482-r8l8qpio9h4vo24kdemkrga95s3c1gln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yangpentingyakin.pulsedetecctor",
+            "certificate_hash": "25a15db84fffbe09c5f3903d95c89c80d3531ea0"
+          }
+        },
+        {
+          "client_id": "81174131482-0b28r0bik85ii2bgqt7otsb1p1q4ndb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHU34wt4mc99d-l4e_qnkSBrwBeyR3QCU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81174131482-0b28r0bik85ii2bgqt7otsb1p1q4ndb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
