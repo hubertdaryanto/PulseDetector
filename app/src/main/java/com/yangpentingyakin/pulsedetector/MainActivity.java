@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    Button buttonON,buttonOFF;
     BluetoothAdapter myBluetoothAdapter;
 
+    String address = null, name=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-      //  buttonON=(Button) findViewById(R.id.btON);
-      //  buttonOFF=(Button) findViewById(R.id.btOFF);
+
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         bluetoothONMethod();
