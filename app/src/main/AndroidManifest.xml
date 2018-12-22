@@ -25,4 +25,7 @@
         <activity android:name=".LoginTwitter"></activity>
     </application>
 
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/facebook_app_id"/>
 </manifest>

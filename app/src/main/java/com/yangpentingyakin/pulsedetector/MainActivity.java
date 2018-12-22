@@ -65,24 +65,24 @@ public class MainActivity extends AppCompatActivity
 
     private void bluetoothONMethod()
     {
-        buttonON.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-                if(myBluetoothAdapter==null)
-                {
+      //  buttonON.setOnClickListener(new View.OnClickListener(){
+       //     @Override
+        //    public void onClick(View v)
+        //    {
+          //      if(myBluetoothAdapter==null)
+         //       {
 
-                }
-                else
-                {
+          //     }
+           //     else
+             //   {
             //        if(!myBluetoothAdapter.isEnabled())
               //      {
 
 
                 //    }
-                }
-            }
-        });
+               // }
+           // }
+       // });
     }
     @Override
     public void onBackPressed() {
