@@ -2,6 +2,7 @@ package com.yangpentingyakin.pulsedetector;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity
 
 
     BluetoothAdapter myBluetoothAdapter;
-
+    int REQUEST_ENABLE_BT=1;
     String address = null, name=null;
 
     @Override
@@ -42,7 +43,20 @@ public class MainActivity extends AppCompatActivity
 
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        bluetoothONMethod();
+        if(myBluetoothAdapter==null)
+        {
+            //Device does not support bluetooth
+        }
+        else
+        {
+            if(!myBluetoothAdapter.isEnabled())
+            {
+               Intent enableBluetoothIntent=new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+               startActivityForResult(enableBluetoothIntent, REQUEST_ENABLE_BT);
+            }
+        }
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,27 +77,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void bluetoothONMethod()
-    {
-      //  buttonON.setOnClickListener(new View.OnClickListener(){
-       //     @Override
-        //    public void onClick(View v)
-        //    {
-          //      if(myBluetoothAdapter==null)
-         //       {
 
-          //     }
-           //     else
-             //   {
-            //        if(!myBluetoothAdapter.isEnabled())
-              //      {
-
-
-                //    }
-               // }
-           // }
-       // });
-    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -141,6 +135,22 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if(requestCode==REQUEST_ENABLE_BT)
+        {
+            if(resultCode==RESULT_OK)
+            {
+                //bluetooth is enabled
+            }
+            else if (resultCode==RESULT_CANCELED)
+            {
+                //Bluetooth enabling is cancelled
+            }
+        }
+    }
 
 //bluetooth systems
 //
