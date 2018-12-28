@@ -33,11 +33,13 @@ public class MainActivity extends AppCompatActivity
     BluetoothAdapter myBluetoothAdapter;
     int REQUEST_ENABLE_BT=1;
     String address = null, name=null;
+    private Button Login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Login = (Button) findViewById(R.id.LoginButton);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -75,6 +77,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginApp.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -152,41 +161,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+
     //serial input
-    bluetoothIn = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            if (msg.what == handlerState) {
-                String readMessage = (String) msg.obj;
-                recDataString.append(readMessage);
-                int startofLineIndex = recDataString.indexOf("#");
-                int endOfLineIndex = recDataString.indexOf("\n");
 
-                if (endOfLineIndex > 0) {
-                    String dataInPrint = recDataString.substring(0, endOfLineIndex);
-                    txtInput.setText("Input: "+dataInPrint);
-                    if (recDataString.charAt(0) == '#')
-                    {
-                        String[] separated =dataInPrint.split(":");
-                        //inisial=separated[0];
-                        String data1 = separated[1];
-                        String data2 = separated[2];
-                        String data3 = separated[3];
-                        String data4 = separated[4];
-                        String data5 = separated[5];
-
-                        txtJarak1.setText("Data Ultrasonik1 :"+data4 );
-                        txtJarak2.setText("Data Ultrasonik2 : "+data5 );
-                        txtPh.setText("Data Ph : "+data1);
-                        txtLoad.setText("Data Load Cell : "+data3);
-                        txtTurbidity.setText("Data Turbidity : "+data2 );
-                    }
-                    recDataString.delete(0, recDataString.length());
-                    dataInPrint = " ";
-                }
-            }
-        }
-    };
-}
 
 //bluetooth chat systems
 //
