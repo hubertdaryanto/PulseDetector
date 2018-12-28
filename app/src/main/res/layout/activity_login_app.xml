@@ -86,15 +86,4 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="373dp" />
 
-    <Button
-        android:id="@+id/signup"
-        android:layout_width="wrap_content"
-        android:layout_height="61dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="434dp"
-        android:text="Sign up"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="434dp" />
-
 </RelativeLayout>
