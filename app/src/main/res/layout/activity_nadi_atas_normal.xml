@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NadiAtasNormal">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="478dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="17dp"
+        android:text="Detak jantung saya cepat, apa artinya?\nDenyut jantung saat sedang istirahat yang melebihi 100 denut per menit pada orang dewasa merupakan kondisi yang disebut tachycardia. Seberapa cepat 'terlalu cepat' untuk anda mungkin tergantung pada usia dan kondisi fisik anda.\nMenurut sebuah studi dari Medical College of University Qingdao di Shandong, Tiongkok, orang-orang yang memiliki denyut jantung istirahat lebih dari 80 denyut per menit mungkin berarti anda memiliki resiko lebih tinggi untuk mengalami kematian dini. 'Denyut jantung istirahat yang lebih tinggi dapat memprediksi semua penyebab dan kematian kardiovaskular', kata pemimpin peneliti Dr. Dongfeng Zhang, dilansir dari WebMD. Peneliti juga menemukan bahwa orang dengan tingkat jantung istirahat dari 60 sampai 80 denyut per menit memiliki resiko 21 persen lebih besar. Namun, Zhang mengatakan resiko ini kecil - maksudnya, kemungkinan langsung seseorang meninggal akibat denyut jantung istirahat cepat termasuk rendah. Selain itu, studi tidak membuktikan bahwa denyut jantung menyebabkan kematian dini; hasil studi hanya menemukan adanya hubungan antara kedua kondisi tersebut." />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="379dp"
+        android:src="@drawable/choke"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="2dp" />
+
+</RelativeLayout>

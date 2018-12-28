@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NadiBawahNormal">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="349dp"
+        android:layout_height="454dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:text="Detak jantung saya di bawah normal, apa harus khawatir? \n\nDetak jantung lemah (di bawah 60 BPM) bisa menjadi tanda dari masalah pada sistem listrik jantung, disebut bradycardia. Ini berarti bahwa alat pacu jantung alami tidak bekerja dengan baik atau bahwa jalur listrik jantung terganggu.\nDalam kasus bradycardia parah, jantung berdetak sangat lambat sehingga tidak memompa cukup darah untuk memenuhi kebutuhan tubuh. Hal ini dapat menyebabkan gejala yang berkisar dari letih lemah lesu, pusing atau kepala berkunang, kebingungan, pusing atau ingin pingsan; beberapa orang mungkin merasa sesak napas. Dalam kasus ekstrim, gagal jantung atau serangan jantung mungkin menjadi efek samping dari detak jantung lemah yang dapat mengancam nyawa."
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+</RelativeLayout>
