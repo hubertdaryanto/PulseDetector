@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity
     {
         final Handler handler = new Handler();
         stopThread = false;
-        buffer = new byte[1024];
+        buffer = new byte[512000];
         Thread thread  = new Thread(new Runnable()
         {
             public void run()
@@ -196,7 +196,8 @@ public class MainActivity extends AppCompatActivity
                             handler.post(new Runnable() {
                                 public void run()
                                 {
-                                    DenyutTest.setText(string);
+
+                                    DenyutTest.append(string);
                                 }
                             });
 
