@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity
                             handler.post(new Runnable() {
                                 public void run()
                                 {
-                                    //ganti jadi biar masuk ke DB
+                                    //tinggal implement ai nya belum
                                     DenyutTest.append(string);
                                     db.addRecord(new Bpm(string));
                                 }
