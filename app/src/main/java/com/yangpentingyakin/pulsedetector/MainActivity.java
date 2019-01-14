@@ -27,6 +27,8 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity
     private BluetoothSocket socket;
     private OutputStream outputStream;
     private InputStream inputStream;
+    Date currentTime = Calendar.getInstance().getTime();
     Button startButton, sendButton,clearButton,stopButton;
     TextView DenyutTest;
     EditText editText;
@@ -195,12 +198,14 @@ public class MainActivity extends AppCompatActivity
                         {
                             byte[] rawBytes = new byte[byteCount];
                             inputStream.read(rawBytes);
+
                             final String string=new String(rawBytes,"UTF-8");
                             handler.post(new Runnable() {
                                 public void run()
                                 {
                                     //ganti jadi biar masuk ke DB
                                     DenyutTest.append(string);
+                                    db.addRecord(new Bpm(string));
                                 }
                             });
 
