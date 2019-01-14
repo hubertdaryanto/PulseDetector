@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity
     BluetoothAdapter myBluetoothAdapter;
     int REQUEST_ENABLE_BT=1;
 
+    DatabaseHandler db = new DatabaseHandler(this);
+
     private Button Login;
     //    private final String DEVICE_NAME="MyBTBee";
     private final String DEVICE_ADDRESS="FC:A8:9A:00:83:1B";
@@ -197,7 +199,7 @@ public class MainActivity extends AppCompatActivity
                             handler.post(new Runnable() {
                                 public void run()
                                 {
-
+                                    //ganti jadi biar masuk ke DB
                                     DenyutTest.append(string);
                                 }
                             });
