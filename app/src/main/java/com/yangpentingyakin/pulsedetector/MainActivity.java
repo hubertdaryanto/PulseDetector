@@ -30,9 +30,10 @@ import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 
+
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
 
     BluetoothAdapter myBluetoothAdapter;
     int REQUEST_ENABLE_BT=1;
