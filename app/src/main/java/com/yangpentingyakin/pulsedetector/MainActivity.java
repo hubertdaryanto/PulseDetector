@@ -206,6 +206,7 @@ public class MainActivity extends AppCompatActivity
                                     //tinggal implement ai nya belum
                                     DenyutTest.append(string);
                                     db.addRecord(new Bpm(string));
+                                    db.getAllRecord();
                                 }
                             });
 
