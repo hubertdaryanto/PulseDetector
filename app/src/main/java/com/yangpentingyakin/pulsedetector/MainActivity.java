@@ -57,7 +57,10 @@ public class MainActivity extends AppCompatActivity
     boolean deviceConnected=false;
     Thread thread;
     byte buffer[];
-    int bytes;
+    int input;
+    Integer Normal;
+    Integer Kelebihan;
+    Integer Kurang;
     boolean stopThread;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,9 +207,29 @@ public class MainActivity extends AppCompatActivity
                                 public void run()
                                 {
                                     //tinggal implement ai nya belum
-                                    DenyutTest.append(string);
-                                    db.addRecord(new Bpm(string));
+
+                                    input=Integer.parseInt(string);
+                                    db.addRecord(input);
                                     db.getAllRecord();
+                                    if(input >= 60 || input <= 120)
+                                    {
+                                        Normal++;
+                                    }
+                                    else if (input > 120)
+                                    {
+                                        Kelebihan++;
+                                    }
+                                    else if (input < 60)
+                                    {
+                                        Kurang++;
+                                    }
+
+
+                                    if (Kurang > 60 || Kelebihan > 60)
+                                    {
+
+                                    }
+                                    // return contact list
                                 }
                             });
 
