@@ -1,3 +1,5 @@
+package com.yangpentingyakin.pulsedetector;
+
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,12 +15,10 @@ import android.text.TextUtils;
 import android.widget.Toast;
 import android.view.View;
 
-import com.yangpentingyakin.pulsedetector.MainActivity;
 
 
-public class SMSActivity extends AppCompatActivity {
+public class SmsActivity extends AppCompatActivity {
 
-    MainActivity MA=new MainActivity(this);
 
     private static final int PERMISSION_REQUEST_CODE = 1;
     private Button sendSMS;
@@ -26,9 +26,8 @@ public class SMSActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms);
 
-        final EditText phoneNumber = (EditText) findViewById(R.id.phoneNumber);
+        final EditText phoneNumber = "081234567890" // diambil dari setting app;
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkPermission()) {
                 Log.e("permission", "Permission already granted.");
@@ -37,8 +36,8 @@ public class SMSActivity extends AppCompatActivity {
             }
         }
 
-        final EditText smsText = (EditText) findViewById(R.id.message);
-        sendSMS = (Button) findViewById(R.id.sendSMS);
+        final EditText smsText = Nama + "Sedang dalam bahaya jantung di" + Lokasi + "Mohon segera ditindaklanjuti!. Terimakasih.";
+
         sendSMS.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -89,7 +88,6 @@ public class SMSActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(SMSActivity.this,
                             "Permission denied", Toast.LENGTH_LONG).show();
-                    Button sendSMS = (Button) findViewById(R.id.sendSMS);
                     sendSMS.setEnabled(false);
 
                 }

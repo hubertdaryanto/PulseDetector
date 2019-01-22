@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     int REQUEST_ENABLE_BT=1;
 
     DatabaseHandler db = new DatabaseHandler(this);
+    SmsActivity sms = new SmsActivity();
 
     private Button Login;
     //    private final String DEVICE_NAME="MyBTBee";
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity
     boolean deviceConnected=false;
     Thread thread;
     byte buffer[];
-    int input;
+    static int input;
     Integer Normal;
     Integer Kelebihan;
     Integer Kurang;

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.yangpentingyakin.pulsedetector.MainActivity.input;
 
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -32,8 +33,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //Create table
         @Override
         public void onCreate(SQLiteDatabase db) {
-            String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_TALL + "("
-                    + KEY_BPM + " INTEGER)";
+            String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_TALL +
+                    KEY_BPM;
             db.execSQL(CREATE_CONTACTS_TABLE);
         }
 
@@ -49,7 +50,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db  = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_BPM, MainActivity.input);
+        values.put(KEY_BPM, input);
 
         db.insert(TABLE_TALL, null, values);
         db.close();
