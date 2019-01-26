@@ -27,6 +27,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
@@ -40,10 +41,11 @@ public class MainActivity extends AppCompatActivity
     BluetoothAdapter myBluetoothAdapter;
     int REQUEST_ENABLE_BT=1;
 
-    DatabaseHandler db = new DatabaseHandler(this);
-    SmsActivity sms = new SmsActivity();
+    DatabaseHandler db;
+    SmsActivity sms;
 
     private Button Login;
+    private Button LihatDenyut;
     //    private final String DEVICE_NAME="MyBTBee";
     private final String DEVICE_ADDRESS="FC:A8:9A:00:83:1B";
     private final UUID PORT_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");//Serial Port Service ID
@@ -66,14 +68,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
         Login = (Button) findViewById(R.id.LoginButton);
+        LihatDenyut = (Button) findViewById(R.id.GotoPulseSummary)
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        db = new DatabaseHandler(this);
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         Set<BluetoothDevice> bondedDevices = myBluetoothAdapter.getBondedDevices();
-
+        sms = new SmsActivity(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +103,13 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-        DenyutTest =(TextView) findViewById(R.id.BacaDenyut);
+        LihatDenyut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Identity_pulse_data.class);
+                startActivity(intent);
+            }
+        });
 
         if(BTinit())
         {
@@ -207,14 +216,17 @@ public class MainActivity extends AppCompatActivity
                             handler.post(new Runnable() {
                                 public void run()
                                 {
-                                    //tinggal implement ai nya belum
 
+                                    long date= System.currentTimeMillis();
+                                    SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy hh-mm-ss a");
+                                    String waktuscan = sdf.format(date);
                                     input=Integer.parseInt(string);
-                                    db.addRecord(input);
-                                    db.getAllRecord();
+                                    db.addRecord(waktuscan,input);
                                     if(input >= 60 || input <= 120)
                                     {
                                         Normal++;
+                                        Kelebihan=0;
+                                        Kurang=0;
                                     }
                                     else if (input > 120)
                                     {

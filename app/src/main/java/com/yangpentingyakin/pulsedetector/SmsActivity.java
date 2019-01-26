@@ -23,6 +23,10 @@ public class SmsActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 1;
     private Button sendSMS;
 
+    public SmsActivity(MainActivity mainActivity) {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
