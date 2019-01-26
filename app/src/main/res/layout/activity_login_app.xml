@@ -9,6 +9,7 @@
     android:paddingRight="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
+    android:background="#BBBBBB"
     tools:context=".LoginApp">
 
     <EditText
@@ -35,7 +36,7 @@
 
     <Button
         android:id="@+id/Login"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -55,7 +56,7 @@
 
     <Button
         android:id="@+id/btnFacebook"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -66,7 +67,7 @@
 
     <Button
         android:id="@+id/btnTwitter"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -77,23 +78,13 @@
 
     <Button
         android:id="@+id/btnGoogle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnTwitter"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="379dp"
+        android:layout_marginTop="380dp"
         android:text="Login with Google"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="373dp" />
-
-    <Button
-        android:id="@+id/signup"
-        android:layout_width="wrap_content"
-        android:layout_height="61dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="434dp"
-        android:text="Sign up"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="434dp" />
 
 </RelativeLayout>

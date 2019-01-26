@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.facebook.FacebookSdk;
 import com.mukeshsolanki.sociallogin.facebook.FacebookHelper;
 import com.mukeshsolanki.sociallogin.facebook.FacebookListener;
+import com.mukeshsolanki.sociallogin.twitter.TwitterHelper;
+import com.mukeshsolanki.sociallogin.twitter.TwitterListener;
 import com.mukeshsolanki.sociallogin.google.GoogleHelper;
 import com.mukeshsolanki.sociallogin.google.GoogleListener;
 
@@ -17,6 +19,7 @@ public class LoginApp extends AppCompatActivity implements FacebookListener, Goo
 
     FacebookHelper mFaceBook;
     GoogleHelper mGoogle;
+    TwitterHelper mTwitter;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -25,6 +28,7 @@ public class LoginApp extends AppCompatActivity implements FacebookListener, Goo
 
         mFaceBook.onActivityResult(requestCode,resultCode,data);
         mGoogle.onActivityResult(requestCode,resultCode,data);
+        mTwitter.onActivityResult(requestCode,resultCode,data);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,7 @@ public class LoginApp extends AppCompatActivity implements FacebookListener, Goo
         });
 
         Button btnGoogle = (Button)findViewById(R.id.btnGoogle);
-        btnFacebook.setOnClickListener(new View.OnClickListener()
+        btnGoogle.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick (View v)
@@ -91,4 +95,6 @@ public class LoginApp extends AppCompatActivity implements FacebookListener, Goo
         Toast.makeText(this, "Signout !!!", Toast.LENGTH_SHORT).show();
     }
 }
+
+//tes commit
 
