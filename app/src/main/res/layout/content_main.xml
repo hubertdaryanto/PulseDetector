@@ -9,6 +9,14 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/PulseDetector"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="54dp" />
+
     <TextView
         android:id="@+id/BacaDenyut"
         android:layout_width="wrap_content"
@@ -24,15 +32,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="361dp" />
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="378dp" />
 
     <Button
         android:id="@+id/GotoPulseSummary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lihat Denyut"
-        tools:layout_editor_absoluteX="255dp"
-        tools:layout_editor_absoluteY="361dp" />
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="378dp" />
 
 </android.support.constraint.ConstraintLayout>

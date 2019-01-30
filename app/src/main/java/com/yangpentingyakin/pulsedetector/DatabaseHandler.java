@@ -70,36 +70,53 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return res;
     }
 
-    public Bpm getContact(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(TABLE_NAME, new Integer {
-                        KEY_BPM} "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        Bpm contact = new Bpm(cursor.getString(0));
-        // return contact
-        return contact;
-    }
-    // get All Record
-    public List<Bpm> getAllRecord() {
-        List<Bpm> contactList = new ArrayList<Bpm>();
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
-
+    public boolean updateData(String id,String waktu, int denyut)
+    {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                Bpm bpm = new Bpm();
-                bpm.setBpm(cursor.getString(0));
-                contactList.add(bpm);
-            } while (cursor.moveToNext());
-        }
-
-        return contactList;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1,id);
+        contentValues.put(COL_2,waktu);
+        contentValues.put(COL_3,denyut);
+        db.update(TABLE_NAME,contentValues, "Id = ?",new String[]{ id });
+        return true;
     }
+
+    public Integer deleteData(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+      return  db.delete(TABLE_NAME, "ID = ?", new String[] {id});
+    }
+
+//    public Bpm getContact(int id) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//
+//        Cursor cursor = db.query(TABLE_NAME, new Integer {
+//                        KEY_BPM} "=?",
+//                new String[] { String.valueOf(id) }, null, null, null, null);
+//        if (cursor != null)
+//            cursor.moveToFirst();
+//
+//        Bpm contact = new Bpm(cursor.getString(0));
+//        // return contact
+//        return contact;
+//    }
+//    // get All Record
+//    public List<Bpm> getAllRecord() {
+//        List<Bpm> contactList = new ArrayList<Bpm>();
+//        // Select All Query
+//        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+//
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//
+//        if (cursor.moveToFirst()) {
+//            do {
+//                Bpm bpm = new Bpm();
+//                bpm.setBpm(cursor.getString(0));
+//                contactList.add(bpm);
+//            } while (cursor.moveToNext());
+//        }
+//
+//        return contactList;
+//    }
 }

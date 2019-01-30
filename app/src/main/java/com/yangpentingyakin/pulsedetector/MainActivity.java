@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity
 
     private Button Login;
     private Button LihatDenyut;
-    //    private final String DEVICE_NAME="MyBTBee";
     private final String DEVICE_ADDRESS="FC:A8:9A:00:83:1B";
     private final UUID PORT_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");//Serial Port Service ID
     private BluetoothDevice device;
@@ -54,11 +53,9 @@ public class MainActivity extends AppCompatActivity
     private OutputStream outputStream;
     private InputStream inputStream;
     Date currentTime = Calendar.getInstance().getTime();
-    Button startButton, sendButton,clearButton,stopButton;
     TextView DenyutTest;
     EditText editText;
     boolean deviceConnected=false;
-    Thread thread;
     byte buffer[];
     static int input;
     Integer Normal;
@@ -115,7 +112,6 @@ public class MainActivity extends AppCompatActivity
         {
             if(BTconnect())
             {
-
                 deviceConnected=true;
                 beginListenForData();
                 DenyutTest.append("\nConnection Opened!\n");
@@ -336,4 +332,11 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    public void DeleteDataEvery4Hours3MinutesEach()
+    {
+        for(int i=0;i<180;i++)
+        {
+            db.deleteData(String.valueOf(i));
+        }
+    }
 }
