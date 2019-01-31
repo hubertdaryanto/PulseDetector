@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
     int REQUEST_ENABLE_BT=1;
 
     DatabaseHandler db;
-    SmsActivity sms;
+    //SmsActivity sms;
 
     private Button Login;
     private Button LihatDenyut;
@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
         Login = (Button) findViewById(R.id.LoginButton);
-        LihatDenyut = (Button) findViewById(R.id.GotoPulseSummary)
+        LihatDenyut = (Button) findViewById(R.id.GotoPulseSummary);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         db = new DatabaseHandler(this);
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         Set<BluetoothDevice> bondedDevices = myBluetoothAdapter.getBondedDevices();
-        sms = new SmsActivity(this);
+      //  sms = new SmsActivity(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
