@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity
     byte buffer[];
     static int input;
     Integer Normal;
+    Integer  average15detik;
+    Integer detected;
+    Integer hasil15detik;
     Integer Kelebihan;
     Integer Kurang;
     boolean stopThread;
@@ -213,33 +216,31 @@ public class MainActivity extends AppCompatActivity
                                 public void run()
                                 {
 
-                                    long date= System.currentTimeMillis();
-                                    SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy hh-mm-ss a");
-                                    String waktuscan = sdf.format(date);
+
                                     input=Integer.parseInt(string);
-                                    db.addRecord(waktuscan,input);
-                                    if(input >= 60 || input <= 120)
-                                    {
-                                        Normal++;
-                                        Kelebihan=0;
-                                        Kurang=0;
-                                    }
-                                    else if (input > 120)
-                                    {
-                                        Kelebihan++;
-                                    }
-                                    else if (input < 60)
-                                    {
-                                        Kurang++;
-                                    }
+                                    //15 detik tambahkan semua input lalu dibagi yang kedetect berapa (misalkan 20 kali tiap 15 detik)
+                                    average15detik+=input;
 
 
-                                    if (Kurang > 60 || Kelebihan > 60)
-                                    {
-
-                                    }
-                                    // return contact list
+                                    detected++;
                                 }
+                                if(hasil15detik >= 60 || hasil15detik <= 120)
+                                {
+                                    Normal++;
+                                    Kelebihan=0;
+                                    Kurang=0;
+                                }
+                                    else if (hasil15detik > 120)
+                                {
+                                    Kelebihan++;
+                                }
+                                    else if (hasil15detik < 60)
+                                {
+                                    Kurang++;
+                                }
+
+
+
                             });
 
                         }
