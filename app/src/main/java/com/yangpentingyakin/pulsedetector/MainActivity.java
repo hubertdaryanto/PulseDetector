@@ -221,23 +221,25 @@ public class MainActivity extends AppCompatActivity
                                     //15 detik tambahkan semua input lalu dibagi yang kedetect berapa (misalkan 20 kali tiap 15 detik)
                                     average15detik+=input;
 
-
+                                    hasil15detik=average15detik/detected;
                                     detected++;
-                                }
-                                if(hasil15detik >= 60 || hasil15detik <= 120)
-                                {
-                                    Normal++;
-                                    Kelebihan=0;
-                                    Kurang=0;
-                                }
+                                    if(hasil15detik >= 60 || hasil15detik <= 120)
+                                    {
+                                        Normal++;
+                                        Kelebihan=0;
+                                        Kurang=0;
+                                    }
                                     else if (hasil15detik > 120)
-                                {
-                                    Kelebihan++;
-                                }
+                                    {
+                                        Kelebihan++;
+                                    }
                                     else if (hasil15detik < 60)
-                                {
-                                    Kurang++;
+                                    {
+                                        Kurang++;
+                                    }
                                 }
+
+
 
 
 

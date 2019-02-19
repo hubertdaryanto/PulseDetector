@@ -87,4 +87,14 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="373dp" />
 
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGoogle"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="-127dp"
+        android:layout_toStartOf="@+id/btnTwitter"
+        android:text="trigger" />
+
 </RelativeLayout>
