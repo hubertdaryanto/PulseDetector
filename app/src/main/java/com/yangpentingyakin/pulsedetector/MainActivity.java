@@ -31,6 +31,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
 
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity
     EditText editText;
     boolean deviceConnected=false;
     byte buffer[];
-    static int input;
+    Integer input;
     Integer Normal;
     Integer  average15detik;
     Integer detected;
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity
     Integer Kelebihan;
     Integer Kurang;
     boolean stopThread;
+    Timer timer;
+    MyTimerTask myTimerTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +89,6 @@ public class MainActivity extends AppCompatActivity
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -117,12 +120,13 @@ public class MainActivity extends AppCompatActivity
             {
                 deviceConnected=true;
                 beginListenForData();
+                getAverage();
+                //timer
+                trigger();
+                //timer
                 DenyutTest.append("\nConnection Opened!\n");
             }
-
         }
-
-
     }
 
     public boolean BTinit()
@@ -184,10 +188,7 @@ public class MainActivity extends AppCompatActivity
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
-
-
         return connected;
     }
 
@@ -210,44 +211,13 @@ public class MainActivity extends AppCompatActivity
                         {
                             byte[] rawBytes = new byte[byteCount];
                             inputStream.read(rawBytes);
-
                             final String string=new String(rawBytes,"UTF-8");
                             handler.post(new Runnable() {
-                                public void run()
-                                {
-
-
-                                    input=Integer.parseInt(string);
-                                    //15 detik tambahkan semua input lalu dibagi yang kedetect berapa (misalkan 20 kali tiap 15 detik)
-                                    average15detik+=input;
-
-                                    hasil15detik=average15detik/detected;
-                                    detected++;
-                                    if(hasil15detik >= 60 || hasil15detik <= 120)
-                                    {
-                                        Normal++;
-                                        Kelebihan=0;
-                                        Kurang=0;
-                                    }
-                                    else if (hasil15detik > 120)
-                                    {
-                                        Kelebihan++;
-                                    }
-                                    else if (hasil15detik < 60)
-                                    {
-                                        Kurang++;
-                                    }
+                                public void run() {
+                                    input = Integer.parseInt(string);
                                 }
-
-
-
-
-
                             });
-
                         }
-
-
                     }
                     catch (IOException ex)
                     {
@@ -256,7 +226,6 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
-
         thread.start();
     }
 
@@ -270,6 +239,30 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+    public void getAverage() {
+        //15 detik tambahkan semua input lalu dibagi yang kedetect berapa (misalkan 20 kali tiap 15 detik)
+            average15detik+=input;
+            hasil15detik=average15detik/detected;
+            detected++;
+        timer = new Timer();
+        myTimerTask = new MyTimerTask();
+    }
+
+    public void trigger()
+    {
+        if(hasil15detik >= 60 || hasil15detik <= 120)
+        {
+           //lewat aja
+        }
+        else
+        {
+            //activate trigger google maps to prodia
+        }
+        detected=0;
+        average15detik=0;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -312,7 +305,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -340,6 +332,24 @@ public class MainActivity extends AppCompatActivity
         for(int i=0;i<180;i++)
         {
             db.deleteData(String.valueOf(i));
+        }
+    }
+
+    class MyTimerTask extends TimerTask {
+
+        @Override
+        public void run()
+        {
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd:MMMM:yyyy HH:mm:ss a");
+            final String strDate = simpleDateFormat.format(calendar.getTime());
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            });
         }
     }
 }
