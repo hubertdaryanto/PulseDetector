@@ -24,6 +24,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import junit.framework.Test;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -55,17 +57,14 @@ public class MainActivity extends AppCompatActivity
     private OutputStream outputStream;
     private InputStream inputStream;
     Date currentTime = Calendar.getInstance().getTime();
-    TextView DenyutTest;
+    TextView TestTrigger;
     EditText editText;
     boolean deviceConnected=false;
     byte buffer[];
     Integer input;
-    Integer Normal;
     Integer  average15detik;
     Integer detected;
     Integer hasil15detik;
-    Integer Kelebihan;
-    Integer Kurang;
     boolean stopThread;
     Timer timer;
     MyTimerTask myTimerTask;
@@ -76,6 +75,7 @@ public class MainActivity extends AppCompatActivity
         Login = (Button) findViewById(R.id.LoginButton);
         LihatDenyut = (Button) findViewById(R.id.GotoPulseSummary);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        TestTrigger = findViewById(R.id.TestTrigger);
         setSupportActionBar(toolbar);
         db = new DatabaseHandler(this);
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -116,15 +116,21 @@ public class MainActivity extends AppCompatActivity
 
         if(BTinit())
         {
-            if(BTconnect())
-            {
-                deviceConnected=true;
-                beginListenForData();
-                getAverage();
-                //timer
-                trigger();
-                //timer
-                DenyutTest.append("\nConnection Opened!\n");
+            if(BTconnect()) {
+                Timer myTimer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        stopThread = true;
+                        trigger();
+                        stopThread = false;
+                    }
+                };
+                deviceConnected = true;
+                while (deviceConnected) {
+                    beginListenForData();
+                   myTimer.scheduleAtFixedRate(task, 15000, 15000);
+                }
             }
         }
     }
@@ -215,6 +221,7 @@ public class MainActivity extends AppCompatActivity
                             handler.post(new Runnable() {
                                 public void run() {
                                     input = Integer.parseInt(string);
+                                    getAverage();
                                 }
                             });
                         }
@@ -245,19 +252,18 @@ public class MainActivity extends AppCompatActivity
             average15detik+=input;
             hasil15detik=average15detik/detected;
             detected++;
-        timer = new Timer();
-        myTimerTask = new MyTimerTask();
+
     }
 
     public void trigger()
     {
         if(hasil15detik >= 60 || hasil15detik <= 120)
         {
-           //lewat aja
+           TestTrigger.setText("Okay Aman");//lewat aja
         }
         else
         {
-            //activate trigger google maps to prodia
+            TestTrigger.setText("Ke Prodia Sono!");//activate trigger google maps to prodia
         }
         detected=0;
         average15detik=0;

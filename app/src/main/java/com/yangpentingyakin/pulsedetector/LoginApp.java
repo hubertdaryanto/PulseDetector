@@ -11,7 +11,6 @@ import com.facebook.FacebookSdk;
 import com.mukeshsolanki.sociallogin.facebook.FacebookHelper;
 import com.mukeshsolanki.sociallogin.facebook.FacebookListener;
 import com.mukeshsolanki.sociallogin.twitter.TwitterHelper;
-import com.mukeshsolanki.sociallogin.twitter.TwitterListener;
 import com.mukeshsolanki.sociallogin.google.GoogleHelper;
 import com.mukeshsolanki.sociallogin.google.GoogleListener;
 

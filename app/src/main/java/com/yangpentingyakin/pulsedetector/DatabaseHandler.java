@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.yangpentingyakin.pulsedetector.MainActivity.input;
-
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 

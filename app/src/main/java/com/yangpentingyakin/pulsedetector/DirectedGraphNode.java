@@ -1,5 +1,5 @@
-package com.yangpentingyakin.pulsedetector;
-
-public class DirectedGraphNode {
-
-}
+//package com.yangpentingyakin.pulsedetector;
+//
+//public class DirectedGraphNode {
+//
+//}
