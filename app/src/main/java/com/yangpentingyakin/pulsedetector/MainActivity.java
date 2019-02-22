@@ -260,10 +260,13 @@ public class MainActivity extends AppCompatActivity
         if(hasil15detik >= 60 || hasil15detik <= 120)
         {
            TestTrigger.setText("Okay Aman");//lewat aja
+
         }
         else
         {
             TestTrigger.setText("Ke Prodia Sono!");//activate trigger google maps to prodia
+            Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+            startActivity(intent);
         }
         detected=0;
         average15detik=0;
