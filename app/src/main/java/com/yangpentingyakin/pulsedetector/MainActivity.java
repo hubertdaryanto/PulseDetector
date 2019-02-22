@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity
     private OutputStream outputStream;
     private InputStream inputStream;
     Date currentTime = Calendar.getInstance().getTime();
-    TextView TestTrigger;
     EditText editText;
     boolean deviceConnected=false;
     byte buffer[];
@@ -75,7 +74,6 @@ public class MainActivity extends AppCompatActivity
         Login = (Button) findViewById(R.id.LoginButton);
         LihatDenyut = (Button) findViewById(R.id.GotoPulseSummary);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TestTrigger = findViewById(R.id.TestTrigger);
         setSupportActionBar(toolbar);
         db = new DatabaseHandler(this);
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -259,12 +257,10 @@ public class MainActivity extends AppCompatActivity
     {
         if(hasil15detik >= 60 || hasil15detik <= 120)
         {
-           TestTrigger.setText("Okay Aman");//lewat aja
 
         }
         else
         {
-            TestTrigger.setText("Ke Prodia Sono!");//activate trigger google maps to prodia
             Intent intent = new Intent(MainActivity.this, MapsActivity.class);
             startActivity(intent);
         }
